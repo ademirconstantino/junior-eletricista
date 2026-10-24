@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Junior Eletricista | Curitiba e Região Metropolitana</title>
+<meta name="description" content="Junior Eletricista: instalações, manutenção e reparos elétricos residenciais e comerciais em Curitiba e Região Metropolitana. Orçamento pelo WhatsApp (41) 9 9607-5187.">
+<meta name="theme-color" content="#0f7a3d">
+<link rel="icon" type="image/svg+xml" href="img/icone.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-900: #063d1f;
+    --green-800: #0a5a2d;
+    --green-700: #0f7a3d;
+    --green-600: #16a34a;
+    --green-400: #4ade80;
+    --green-100: #dcfce7;
+    --green-50:  #f0fdf4;
+    --white: #ffffff;
+    --ink: #10231a;
+    --muted: #4b5f55;
+    --line: #d7e9de;
+    --radius: 18px;
+    --shadow: 0 10px 30px rgba(6, 61, 31, .10);
+    --wa: #25d366;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Montserrat", sans-serif; line-height: 1.15; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; }
+  .container { width: min(1140px, 100% - 32px); margin-inline: auto; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 1rem;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    cursor: pointer; border: 2px solid transparent; white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-wa { background: var(--wa); color: #fff; box-shadow: 0 8px 22px rgba(37, 211, 102, .35); }
+  .btn-wa:hover { background: #1ebe5a; }
+  .btn-white { background: #fff; color: var(--green-800); }
+  .btn-outline { border-color: rgba(255,255,255,.6); color: #fff; }
+  .btn-outline:hover { background: rgba(255,255,255,.1); }
+  .btn-green { background: var(--green-700); color: #fff; }
+  .btn-green:hover { background: var(--green-800); }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+  .logo { display: flex; align-items: center; }
+  .logo img { height: 50px; width: auto; }
+  .nav-links { display: flex; gap: 28px; font-weight: 500; color: var(--muted); }
+  .nav-links a:hover { color: var(--green-700); }
+  .nav-cta { padding: 11px 20px; font-size: .95rem; }
+  .menu-btn { display: none; background: none; border: 0; padding: 8px; cursor: pointer; color: var(--green-800); }
+  .menu-btn svg { width: 28px; height: 28px; }
+
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden; color: #fff;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(74,222,128,.25), transparent 40%),
+      linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 60%, var(--green-600) 100%);
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, #000 30%, transparent);
+  }
+  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding: 88px 0 110px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); font-size: .88rem; font-weight: 500;
+  }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green-400); box-shadow: 0 0 0 4px rgba(74,222,128,.25); }
+  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; margin: 20px 0 18px; }
+  .hero h1 span { color: var(--green-400); }
+  .hero p.lead { font-size: 1.15rem; opacity: .92; max-width: 560px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+  .hero-points { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 30px; font-size: .95rem; opacity: .95; }
+  .hero-points li { list-style: none; display: flex; align-items: center; gap: 8px; }
+  .hero-points svg { width: 18px; height: 18px; color: var(--green-400); }
+
+  .hero-card {
+    background: #fff; color: var(--ink); border-radius: 24px; padding: 30px;
+    box-shadow: 0 30px 60px rgba(0,0,0,.25); position: relative;
+  }
+  .hero-card .bolt {
+    position: absolute; top: -26px; right: 26px; width: 64px; height: 64px; border-radius: 18px;
+    background: var(--green-400); display: grid; place-items: center; box-shadow: 0 12px 24px rgba(0,0,0,.2);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  .hero-card .bolt svg { width: 34px; height: 34px; color: var(--green-900); }
+  @keyframes pulse { 50% { transform: translateY(-6px) rotate(-4deg); } }
+  .hero-card h3 { font-size: 1.3rem; color: var(--green-800); margin-bottom: 6px; padding-right: 64px; }
+  .hero-card p { color: var(--muted); font-size: .95rem; margin-bottom: 20px; }
+  .phone-big {
+    display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 14px;
+    background: var(--green-50); border: 1px solid var(--line); margin-bottom: 14px;
+  }
+  .phone-big .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--green-700); display: grid; place-items: center; flex: none; }
+  .phone-big .ic svg { width: 22px; height: 22px; color: #fff; }
+  .phone-big small { color: var(--muted); font-size: .8rem; display: block; }
+  .phone-big strong { font-family: "Montserrat", sans-serif; font-size: 1.35rem; color: var(--green-800); }
+  .hero-card .btn { width: 100%; }
+
+  .wave { display: block; width: 100%; height: 60px; margin-top: -59px; position: relative; z-index: 2; }
+
+  /* Sections */
+  section { padding: 90px 0; }
+  .eyebrow { color: var(--green-700); font-weight: 700; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
+  .section-head { text-align: center; max-width: 680px; margin: 0 auto 52px; }
+  .section-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 10px 0 14px; color: var(--green-900); }
+  .section-head p { color: var(--muted); font-size: 1.05rem; }
+
+  /* Services */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .service {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .service:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--green-400); }
+  .service .ic {
+    width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+    background: var(--green-100); color: var(--green-700); margin-bottom: 18px; transition: background .2s, color .2s;
+  }
+  .service:hover .ic { background: var(--green-700); color: #fff; }
+  .service .ic svg { width: 28px; height: 28px; }
+  .service h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--green-900); }
+  .service p { color: var(--muted); font-size: .96rem; }
+
+  /* Why */
+  .why { background: var(--green-50); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .why h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin: 10px 0 16px; color: var(--green-900); }
+  .why .intro { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+  .why-list { display: grid; gap: 18px; }
+  .why-item { display: flex; gap: 16px; background: #fff; padding: 20px; border-radius: 16px; border: 1px solid var(--line); }
+  .why-item .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--green-700); color: #fff; display: grid; place-items: center; flex: none; }
+  .why-item .ic svg { width: 22px; height: 22px; }
+  .why-item h3 { font-size: 1.02rem; color: var(--green-900); margin-bottom: 2px; }
+  .why-item p { color: var(--muted); font-size: .94rem; }
+  .why-visual {
+    position: relative; aspect-ratio: 1 / 1; border-radius: 28px; overflow: hidden;
+    background: linear-gradient(160deg, var(--green-700), var(--green-900));
+    display: grid; place-items: center;
+  }
+  .why-visual svg.house { width: 78%; height: auto; }
+  .why-visual .tag {
+    position: absolute; left: 22px; bottom: 22px; right: 22px; background: #fff; border-radius: 16px; padding: 16px 18px;
+    display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow);
+  }
+  .why-visual .tag .ic { width: 42px; height: 42px; border-radius: 50%; background: var(--green-100); color: var(--green-700); display: grid; place-items: center; flex: none; }
+  .why-visual .tag .ic svg { width: 22px; height: 22px; }
+  .why-visual .tag strong { display: block; color: var(--green-900); font-family: "Montserrat", sans-serif; }
+  .why-visual .tag span { color: var(--muted); font-size: .88rem; }
+  .glow { animation: glow 2.6s ease-in-out infinite; }
+  @keyframes glow { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; counter-reset: step; }
+  .step { position: relative; padding: 28px 24px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--green-700); color: #fff; font-family: "Montserrat", sans-serif; font-weight: 800; margin-bottom: 16px;
+  }
+  .step h3 { font-size: 1.05rem; color: var(--green-900); margin-bottom: 6px; }
+  .step p { color: var(--muted); font-size: .94rem; }
+
+  /* Area */
+  .area { background: var(--green-900); color: #fff; position: relative; overflow: hidden; }
+  .area::before {
+    content: ""; position: absolute; width: 520px; height: 520px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,222,128,.22), transparent 65%); top: -160px; right: -160px;
+  }
+  .area .section-head h2 { color: #fff; }
+  .area .section-head p { color: rgba(255,255,255,.8); }
+  .area .eyebrow { color: var(--green-400); }
+  .cities { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; margin: 0 auto; }
+  .city {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); font-weight: 500; font-size: .95rem;
+  }
+  .city svg { width: 16px; height: 16px; color: var(--green-400); }
+  .city.main { background: var(--green-400); color: var(--green-900); border-color: var(--green-400); font-weight: 700; }
+  .city.main svg { color: var(--green-900); }
+  .area-note { position: relative; text-align: center; margin-top: 30px; color: rgba(255,255,255,.8); }
+
+  /* FAQ */
+  .faq { max-width: 800px; margin: 0 auto; display: grid; gap: 14px; }
+  details { border: 1px solid var(--line); border-radius: 14px; background: #fff; overflow: hidden; }
+  details[open] { border-color: var(--green-400); box-shadow: var(--shadow); }
+  summary {
+    list-style: none; cursor: pointer; padding: 20px 22px; font-weight: 600; color: var(--green-900);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary .plus { width: 28px; height: 28px; border-radius: 50%; background: var(--green-100); color: var(--green-700); display: grid; place-items: center; flex: none; transition: transform .2s; font-size: 1.2rem; line-height: 1; }
+  details[open] summary .plus { transform: rotate(45deg); background: var(--green-700); color: #fff; }
+  details p { padding: 0 22px 20px; color: var(--muted); }
+
+  /* CTA */
+  .cta { padding: 0 0 90px; }
+  .cta-box {
+    border-radius: 28px; padding: 56px 48px; color: #fff; text-align: center;
+    background: radial-gradient(circle at 15% 0%, rgba(74,222,128,.35), transparent 45%), linear-gradient(135deg, var(--green-700), var(--green-900));
+  }
+  .cta-box h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 12px; }
+  .cta-box p { opacity: .9; font-size: 1.08rem; max-width: 560px; margin: 0 auto 30px; }
+  .cta-box .phone { font-family: "Montserrat", sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; display: block; margin-bottom: 26px; letter-spacing: .01em; }
+  .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+
+  /* Footer */
+  footer { background: var(--green-50); border-top: 1px solid var(--line); padding: 36px 0; color: var(--muted); font-size: .92rem; }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; }
+  .foot a { color: var(--green-800); font-weight: 600; }
+
+  /* Floating WhatsApp */
+  .wa-float {
+    position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 62px; height: 62px; border-radius: 50%;
+    background: var(--wa); color: #fff; display: grid; place-items: center; box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    transition: transform .2s;
+  }
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 32px; height: 32px; }
+  .wa-float::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--wa);
+    animation: ring 2s ease-out infinite;
+  }
+  @keyframes ring { from { transform: scale(1); opacity: .8; } to { transform: scale(1.6); opacity: 0; } }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .hero-grid, .why-grid { grid-template-columns: 1fr; }
+    .hero-grid { padding: 64px 0 100px; gap: 56px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .why-visual { max-width: 460px; width: 100%; margin: 0 auto; order: -1; }
+  }
+  @media (max-width: 760px) {
+    .nav-links, .nav-cta { display: none; }
+    .menu-btn { display: block; }
+    .nav-links.open {
+      display: flex; flex-direction: column; gap: 0; position: absolute; top: 72px; left: 0; right: 0;
+      background: #fff; border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .nav-links.open a { padding: 16px 24px; border-top: 1px solid var(--line); }
+    section { padding: 70px 0; }
+    .services-grid, .steps { grid-template-columns: 1fr; }
+    .cta-box { padding: 44px 22px; }
+    .hero-actions .btn { width: 100%; }
+    .foot { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Ícones reutilizáveis -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.2-3.58.93.96-3.49-.23-.36A9.43 9.43 0 0 1 2.56 12c0-5.22 4.25-9.47 9.48-9.47a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.7c0 5.23-4.25 9.48-9.47 9.48zm8.06-17.54A11.33 11.33 0 0 0 12.04.62C5.76.62.65 5.73.65 12c0 2 .52 3.97 1.52 5.7L.55 23.62l6.05-1.59a11.36 11.36 0 0 0 5.44 1.39h.01c6.27 0 11.38-5.11 11.38-11.39 0-3.04-1.18-5.9-3.33-8.05z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo" aria-label="Junior Eletricista — início">
+      <img src="img/logo.svg" alt="Junior Eletricista" width="168" height="58">
+    </a>
+    <nav class="nav-links" id="menu">
+      <a href="#servicos">Serviços</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#atendimento">Atendimento</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a class="btn btn-green nav-cta" href="tel:+5541996075187"><svg><use href="#i-phone"/></svg>(41) 9 9607-5187</a>
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge"><span class="dot"></span> Atendendo Curitiba e Região Metropolitana</span>
+        <h1>Eletricista de confiança, <span>serviço bem feito</span> e seguro.</h1>
+        <p class="lead">Instalações, manutenção e reparos elétricos para sua casa, apartamento ou comércio. Atendimento rápido, preço justo e acabamento caprichado.</p>
+        <div class="hero-actions">
+          <a class="btn btn-wa" href="https://wa.me/5541996075187?text=Ol%C3%A1%20Junior!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Orçamento no WhatsApp</a>
+          <a class="btn btn-outline" href="tel:+5541996075187"><svg><use href="#i-phone"/></svg>Ligar agora</a>
+        </div>
+        <ul class="hero-points">
+          <li><svg><use href="#i-check"/></svg>Orçamento sem compromisso</li>
+          <li><svg><use href="#i-check"/></svg>Residencial e comercial</li>
+          <li><svg><use href="#i-check"/></svg>Segurança em primeiro lugar</li>
+        </ul>
+      </div>
+
+      <div class="hero-card">
+        <div class="bolt"><svg><use href="#i-bolt"/></svg></div>
+        <h3>Precisa de um eletricista?</h3>
+        <p>Fale direto com o Junior e agende seu atendimento.</p>
+        <a class="phone-big" href="tel:+5541996075187">
+          <span class="ic"><svg><use href="#i-phone"/></svg></span>
+          <span><small>Telefone e WhatsApp</small><strong>(41) 9 9607-5187</strong></span>
+        </a>
+        <a class="btn btn-wa" href="https://wa.me/5541996075187?text=Ol%C3%A1%20Junior!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+      </div>
+    </div>
+    <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff" d="M0 40c240-40 480-40 720-10s480 30 720-10v40H0z"/></svg>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Serviços</span>
+        <h2>Tudo o que sua instalação elétrica precisa</h2>
+        <p>Do pequeno reparo à instalação completa, com material adequado e respeito às normas técnicas.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M13 9l-3 4h4l-3 4"/></svg></div>
+          <h3>Instalações elétricas</h3>
+          <p>Instalação completa para obras, reformas e ampliações em residências e comércios.</p>
+        </article>
+        <article class="service reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M8 11h2M8 15h2M14 7h2M14 11h2M14 15h2"/></svg></div>
+          <h3>Quadro de distribuição</h3>
+          <p>Montagem, troca e organização de quadros, disjuntores, DR e DPS.</p>
+        </article>
+        <article class="service reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"/></svg></div>
+          <h3>Iluminação</h3>
+          <p>Instalação de luminárias, lustres, spots, fitas de LED, sensores e iluminação externa.</p>
+        </article>
+        <article class="service reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><circle cx="10" cy="11" r="1"/><circle cx="14" cy="11" r="1"/><path d="M12 14v2"/></svg></div>
+          <h3>Tomadas e interruptores</h3>
+          <p>Troca, instalação de novos pontos e adequação ao padrão brasileiro de tomadas.</p>
+        </article>
+        <article class="service reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M8 7h8l-1 6H9z"/><path d="M12 13v3a3 3 0 0 0 3 3h2"/><path d="M7 21h10"/></svg></div>
+          <h3>Chuveiros e torneiras elétricas</h3>
+          <p>Instalação e troca de chuveiros, resistências e circuitos dedicados com a bitola certa.</p>
+        </article>
+        <article class="service reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M12 8l-2 3h3l-2 3"/></svg></div>
+          <h3>Manutenção e reparos</h3>
+          <p>Identificação de curtos, quedas de disjuntor, mau contato e fiação danificada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="why" id="diferenciais">
+    <div class="container why-grid">
+      <div class="why-visual reveal" aria-hidden="true">
+        <svg class="house" viewBox="0 0 300 260">
+          <path d="M150 20 30 115h28v120h184V115h28z" fill="rgba(255,255,255,.1)" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+          <rect x="125" y="160" width="50" height="75" rx="4" fill="rgba(255,255,255,.15)" stroke="#fff" stroke-width="4"/>
+          <rect x="78" y="135" width="36" height="36" rx="4" fill="#4ade80" class="glow"/>
+          <rect x="186" y="135" width="36" height="36" rx="4" fill="#4ade80" class="glow" style="animation-delay:.8s"/>
+          <circle cx="150" cy="100" r="26" fill="#4ade80" opacity=".25" class="glow"/>
+          <path d="M156 78 140 104h12l-4 20 16-26h-12z" fill="#fff"/>
+        </svg>
+        <div class="tag">
+          <span class="ic"><svg><use href="#i-check"/></svg></span>
+          <div><strong>Serviço com garantia</strong><span>Trabalho feito para durar</span></div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow reveal">Por que escolher o Junior</span>
+        <h2 class="reveal">Eletricidade não é lugar para improviso</h2>
+        <p class="intro reveal">Uma instalação mal feita pode causar choques, curtos e até incêndios. Por isso cada serviço é feito com atenção, material de qualidade e explicação clara do que foi feito.</p>
+        <div class="why-list">
+          <div class="why-item reveal">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <div><h3>Segurança e normas técnicas</h3><p>Serviços executados seguindo as boas práticas e a NBR 5410.</p></div>
+          </div>
+          <div class="why-item reveal">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><h3>Pontualidade</h3><p>Horário combinado é horário cumprido, sem enrolação.</p></div>
+          </div>
+          <div class="why-item reveal">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v10H4z"/><circle cx="12" cy="12" r="2.5"/><path d="M7 7V5M17 19v-2"/></svg></span>
+            <div><h3>Preço justo e transparente</h3><p>Orçamento claro antes de começar, sem surpresas no final.</p></div>
+          </div>
+          <div class="why-item reveal">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V10l6-5 6 5v11"/><path d="M10 14h4"/></svg></span>
+            <div><h3>Limpeza e cuidado</h3><p>Respeito pelo seu espaço: o local fica limpo e organizado.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Simples, rápido e sem complicação</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>Chame no WhatsApp</h3><p>Conte o que precisa e, se puder, envie fotos do local.</p></div>
+        <div class="step reveal"><h3>Receba o orçamento</h3><p>Você recebe um valor claro e combina o melhor dia e horário.</p></div>
+        <div class="step reveal"><h3>Serviço executado</h3><p>Trabalho feito com segurança, material adequado e capricho.</p></div>
+        <div class="step reveal"><h3>Tudo funcionando</h3><p>Testes finais e orientação sobre o que foi feito.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁREA DE ATENDIMENTO -->
+  <section class="area" id="atendimento">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Área de atendimento</span>
+        <h2>Curitiba e Região Metropolitana</h2>
+        <p>Atendimento em toda a capital e nas cidades vizinhas.</p>
+      </div>
+      <div class="cities reveal">
+        <span class="city main"><svg><use href="#i-pin"/></svg>Curitiba</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>São José dos Pinhais</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Colombo</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Pinhais</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Araucária</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Almirante Tamandaré</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Campo Largo</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Fazenda Rio Grande</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Piraquara</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Campina Grande do Sul</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Quatro Barras</span>
+        <span class="city"><svg><use href="#i-pin"/></svg>Campo Magro</span>
+      </div>
+      <p class="area-note reveal">Sua cidade não está na lista? Chame no WhatsApp e consulte.</p>
+    </div>
+  </section>
+
+  <!-- DÚVIDAS -->
+  <section id="duvidas">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2>Perguntas comuns</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Como faço para pedir um orçamento?<span class="plus">+</span></summary>
+          <p>É só chamar no WhatsApp (41) 9 9607-5187, explicar o serviço e, se possível, mandar fotos. Assim o orçamento sai mais rápido e preciso.</p>
+        </details>
+        <details>
+          <summary>Vocês atendem residências e comércios?<span class="plus">+</span></summary>
+          <p>Sim. Atendemos casas, apartamentos, condomínios, lojas, escritórios e pequenos comércios.</p>
+        </details>
+        <details>
+          <summary>Quais cidades são atendidas?<span class="plus">+</span></summary>
+          <p>Curitiba e Região Metropolitana, incluindo São José dos Pinhais, Colombo, Pinhais, Araucária, Campo Largo, Fazenda Rio Grande e outras. Consulte sua região.</p>
+        </details>
+        <details>
+          <summary>Meu disjuntor fica desarmando. O que pode ser?<span class="plus">+</span></summary>
+          <p>Pode ser sobrecarga no circuito, curto-circuito, fuga de corrente ou disjuntor com defeito. Não tente forçar o religamento várias vezes — chame um eletricista para avaliar com segurança.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <h2>Vamos resolver sua parte elétrica?</h2>
+        <p>Fale agora com o Junior e receba seu orçamento sem compromisso.</p>
+        <a class="phone" href="tel:+5541996075187">(41) 9 9607-5187</a>
+        <div class="cta-actions">
+          <a class="btn btn-wa" href="https://wa.me/5541996075187?text=Ol%C3%A1%20Junior!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+          <a class="btn btn-white" href="tel:+5541996075187"><svg><use href="#i-phone"/></svg>Ligar agora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <a href="#inicio" class="logo">
+      <img src="img/logo.svg" alt="Junior Eletricista" width="168" height="58">
+    </a>
+    <div>Telefone e WhatsApp: <a href="tel:+5541996075187">(41) 9 9607-5187</a></div>
+    <div>© <span id="ano">2026</span> Junior Eletricista</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5541996075187?text=Ol%C3%A1%20Junior!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  const btn = document.querySelector('.menu-btn');
+  const menu = document.getElementById('menu');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+
+  const io = 'IntersectionObserver' in window && new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+</script>
+</body>
+</html>
